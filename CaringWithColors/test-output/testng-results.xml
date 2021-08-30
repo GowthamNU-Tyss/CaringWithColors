@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[Loggedin Successfully]]>
+    </line>
+    <line>
+      <![CDATA[Welcome to Homescreen]]>
+    </line>
+    <line>
+      <![CDATA[Loggedout Successfully]]>
+    </line>
+    <line>
+      <![CDATA[App closes successfully]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2021-08-30T12:53:17Z" name="Suite" finished-at="2021-08-30T12:56:23Z" duration-ms="186269">
+    <groups>
+    </groups>
+    <test started-at="2021-08-30T12:53:17Z" name="Test" finished-at="2021-08-30T12:56:23Z" duration-ms="186269">
+      <class name="teachopia.WelcomeToTeachopiaTest">
+        <test-method is-config="true" signature="installTeachopia()[pri:0, instance:teachopia.WelcomeToTeachopiaTest@1622f1b]" started-at="2021-08-30T12:53:17Z" name="installTeachopia" finished-at="2021-08-30T12:55:36Z" duration-ms="139163" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- installTeachopia -->
+        <test-method is-config="true" signature="loginIntoTeachopia()[pri:0, instance:teachopia.WelcomeToTeachopiaTest@1622f1b]" started-at="2021-08-30T12:55:36Z" name="loginIntoTeachopia" finished-at="2021-08-30T12:56:11Z" duration-ms="35603" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Loggedin Successfully]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- loginIntoTeachopia -->
+        <test-method signature="welcomeTest()[pri:0, instance:teachopia.WelcomeToTeachopiaTest@1622f1b]" started-at="2021-08-30T12:56:11Z" name="welcomeTest" finished-at="2021-08-30T12:56:11Z" duration-ms="16" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Welcome to Homescreen]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- welcomeTest -->
+        <test-method is-config="true" signature="logoutFromTeachopia()[pri:0, instance:teachopia.WelcomeToTeachopiaTest@1622f1b]" started-at="2021-08-30T12:56:11Z" name="logoutFromTeachopia" finished-at="2021-08-30T12:56:21Z" duration-ms="9742" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Loggedout Successfully]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- logoutFromTeachopia -->
+        <test-method is-config="true" signature="quitTeachopia()[pri:0, instance:teachopia.WelcomeToTeachopiaTest@1622f1b]" started-at="2021-08-30T12:56:21Z" name="quitTeachopia" finished-at="2021-08-30T12:56:23Z" duration-ms="1682" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[App closes successfully]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- quitTeachopia -->
+      </class> <!-- teachopia.WelcomeToTeachopiaTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
