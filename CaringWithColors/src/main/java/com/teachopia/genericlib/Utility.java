@@ -1,6 +1,8 @@
 package com.teachopia.genericlib;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.ServerSocket;
 import java.util.Date;
 
 import org.openqa.selenium.OutputType;
@@ -14,10 +16,34 @@ import org.testng.asserts.SoftAssert;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 
 public class Utility 
-{
+{	
+	AppiumDriverLocalService service;
+	
+	public boolean checkIfServerIsRunnning(int port) 
+	{
+		boolean isServerRunning = false;
+		ServerSocket serverSocket;
+		try 
+		{
+			serverSocket = new ServerSocket(port);	
+			serverSocket.close();
+		} 
+		catch (IOException e) 
+		{
+			//If control comes here, then it means that the port is in use
+			isServerRunning = true;
+		} 
+		finally 
+		{
+			serverSocket = null;
+		}
+		return isServerRunning;
+	}
+
 	public static void takeScreenshot(AndroidDriver<?> driver,ITestResult result)
 	{
 		String methodname = result.getMethod().getMethodName();

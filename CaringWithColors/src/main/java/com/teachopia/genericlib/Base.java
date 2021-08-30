@@ -21,6 +21,7 @@ import com.teachopia.pagerepository.WelcomeScreen;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 
 @Listeners(com.teachopia.genericlib.ListenerImp.class)
@@ -30,12 +31,25 @@ public class Base
 	DesiredCapabilities dc = new DesiredCapabilities();
 	public AndroidDriver<WebElement> dr;
 	public static AndroidDriver<WebElement> staticdriver;
+	static Utility u = new Utility();
+	static AppiumDriverLocalService service;
 	
+	public static AppiumDriverLocalService startServer()
+	{
+		boolean flag = u.checkIfServerIsRunnning(4723);
+		if(!flag)
+		{
+			service=AppiumDriverLocalService.buildDefaultService();
+			service.start();
+		}
+			return service;
+			
+	}
 	
 	@BeforeClass()
 	public void installTeachopia() throws MalformedURLException
-	{		
-		
+	{	
+		service = startServer();
 		dc.setCapability(MobileCapabilityType.DEVICE_NAME, "Android device");
 		dc.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator1");//SendKeys are not working in UiAutomator2
 		
@@ -76,7 +90,6 @@ public class Base
 	@AfterMethod()
 	public void logoutFromTeachopia() throws InterruptedException
 	{
-		Utility u = new Utility();
 		MyDashboardScreen mds = new MyDashboardScreen(dr);
 		LoginScreen ls = new LoginScreen(dr);
 		HamburgerMenuWindow hm = new HamburgerMenuWindow(dr);
@@ -95,6 +108,7 @@ public class Base
 	public void quitTeachopia()
 	{
 		dr.quit();
+		service.stop();
 		Reporter.log("App closes successfully", true);
 	}
 }
