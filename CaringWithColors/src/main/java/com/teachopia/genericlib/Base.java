@@ -42,8 +42,7 @@ public class Base
 			service=AppiumDriverLocalService.buildDefaultService();
 			service.start();
 		}
-			return service;
-			
+			return service;		
 	}
 	
 	@BeforeClass()
@@ -104,11 +103,22 @@ public class Base
 		Reporter.log("Loggedout Successfully", true);
 	}
 	
+	public static AppiumDriverLocalService stopServer()
+	{
+		boolean flag = u.checkIfServerIsRunnning(4723);
+		if(flag)
+		{
+			service=AppiumDriverLocalService.buildDefaultService();
+			service.stop();
+		}
+			return service;		
+	}
+	
 	@AfterClass
 	public void quitTeachopia()
 	{
 		dr.quit();
-		service.stop();
+		service = stopServer();
 		Reporter.log("App closes successfully", true);
 	}
 }
