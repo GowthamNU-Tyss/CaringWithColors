@@ -102,23 +102,21 @@ public class Base
 		u.verify("User Login", login);
 		Reporter.log("Loggedout Successfully", true);
 	}
-	
-	public static AppiumDriverLocalService stopServer()
+	static boolean flag;
+	public static boolean stopServer()
 	{
-		boolean flag = u.checkIfServerIsRunnning(4723);
-		if(flag)
-		{
-			service=AppiumDriverLocalService.buildDefaultService();
-			service.stop();
-		}
-			return service;		
+		flag = u.checkIfServerIsRunnning(4723);	
+		return flag;
 	}
 	
 	@AfterClass
 	public void quitTeachopia()
 	{
 		dr.quit();
-		service = stopServer();
+		if(flag)
+		{
+			service.stop();
+		}
 		Reporter.log("App closes successfully", true);
 	}
 }
